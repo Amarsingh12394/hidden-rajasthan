@@ -5,11 +5,13 @@ import { useFavorite } from '../../context/FavoriteContext'
 import { useUser } from '../../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, size = 'normal' }) => {
   const { addToCart } = useCart()
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorite()
   const { user } = useUser()
   const navigate = useNavigate()
+
+  const imageHeight = size === 'large' ? 'h-64 md:h-72' : 'h-48'
 
   const handleAddToCart = () => {
     if (!user) {
@@ -32,7 +34,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="bg-white border rounded-lg p-4 shadow hover:shadow-lg transition relative">
+    <div className="border rounded-lg p-4 shadow hover:shadow-lg transition relative">
       <button
         onClick={handleFavorite}
         className="absolute top-2 right-2 text-2xl focus:outline-none"
@@ -44,7 +46,7 @@ const ProductCard = ({ product }) => {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-48 object-cover rounded"
+          className={`w-full ${imageHeight} object-cover rounded`}
         />
         <h3 className="font-semibold mt-2">{product.name}</h3>
         <p className="text-amber-700 font-bold">${product.price}</p>
