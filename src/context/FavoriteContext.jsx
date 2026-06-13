@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const FavoriteContext = createContext()
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useFavorite = () => {
   const context = useContext(FavoriteContext)
   if (!context) {
@@ -41,9 +42,7 @@ export const FavoriteProvider = ({ children }) => {
     setFavorites((prev) => prev.filter((item) => item.id !== productId))
   }
 
-  const isFavorite = (productId) => {
-    return favorites.some((item) => item.id === productId)
-  }
+  const isFavorite = (productId) => favorites.some((item) => item.id === productId)
 
   const clearFavorites = () => {
     setFavorites([])
