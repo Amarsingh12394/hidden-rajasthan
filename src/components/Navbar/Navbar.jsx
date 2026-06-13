@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center flex-wrap gap-3">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center flex-wrap gap-3 bg-amber-50">
         <Link to="/" className="text-2xl font-bold text-amber-700">Hidden Rajasthan</Link>
         <div className="flex gap-4 items-center">
           <Link to="/shop" className="hover:text-amber-600">Shop</Link>
