@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
+import aboutImage from '../../assets/image/about.jpg'
 
 const About = () => {
   return (
@@ -25,7 +26,7 @@ const About = () => {
         </div>
         <div className="bg-amber-50 p-6 rounded-xl shadow">
           <img
-            src="https://placehold.co/600x400?text=Artisan+at+work"
+            src= {aboutImage}
             alt="Rajasthani artisan"
             className="rounded-lg mb-4 w-full"
           />

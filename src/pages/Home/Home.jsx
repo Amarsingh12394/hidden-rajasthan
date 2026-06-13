@@ -11,6 +11,8 @@ import { suppliers } from '../../data/suppliers'
 import { testimonials } from '../../data/testimonials'
 import { Link } from 'react-router-dom'
 import whyVideo from '../../assets/videos/video2.mp4'
+import b2bBg from '../../assets/image/bg1.png'
+import sectionBg from '../../assets/image/bgal.png'
 
 const Home = () => {
   const bestSellers = products.slice(0, 4)
@@ -26,10 +28,16 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold mb-4">Best Selling Products</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {bestSellers.map(p => <ProductCard key={p.id} product={p} />)}
+      <section
+        className="relative py-8 overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${sectionBg})` }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-2xl font-bold mb-4 text-white">Best Selling Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {bestSellers.map(p => <ProductCard key={p.id} product={p} />)}
+          </div>
         </div>
       </section>
 
@@ -50,11 +58,45 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-8"><h2 className="text-2xl font-bold mb-4">Meet Our Suppliers</h2><div className="grid md:grid-cols-3 gap-6">{suppliers.map(s => <SupplierCard key={s.id} supplier={s} />)}</div></section>
+      <section
+        className="relative py-8 overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${sectionBg})` }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-2xl font-bold mb-4 text-white">Meet Our Suppliers</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {suppliers.map(s => <SupplierCard key={s.id} supplier={s} />)}
+          </div>
+        </div>
+      </section>
 
-      <section className="bg-amber-100 py-12 text-center"><h2 className="text-2xl font-bold">B2B Solutions</h2><p>Bulk orders, corporate gifting, export assistance</p><Link to="/b2b"><Button>Inquire Now</Button></Link></section>
+      <section
+        className="relative py-12 text-center overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${b2bBg})` }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 px-4">
+          <h2 className="text-2xl font-bold text-white">B2B Solutions</h2>
+          <p className="text-white/90 mt-2">Bulk orders, corporate gifting, export assistance</p>
+          <Link to="/b2b" className="inline-block mt-4">
+            <Button>Inquire Now</Button>
+          </Link>
+        </div>
+      </section>
 
-      <section className="container mx-auto px-4 py-8"><h2 className="text-2xl font-bold mb-4">Customer Reviews</h2><div className="grid md:grid-cols-3 gap-4">{testimonials.map(t => <Testimonial key={t.id} data={t} />)}</div></section>
+      <section
+        className="relative py-8 overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${b2bBg})` }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-2xl font-bold mb-4 text-white">Customer Reviews</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            {testimonials.map(t => <Testimonial key={t.id} data={t} />)}
+          </div>
+        </div>
+      </section>
 
       <section className="py-8 text-center bg-gray-100"><h3 className="text-xl">Subscribe to our Newsletter</h3><div className="mt-2 flex justify-center gap-2"><input className="p-2 border rounded" placeholder="Email"/><Button>Subscribe</Button></div></section>
     </div>
