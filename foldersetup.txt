@@ -1,0 +1,72 @@
+hidden-rajasthan/
+├── public/
+│   ├── favicon.ico
+│   └── logo.png                     (optional)
+├── src/
+│   ├── assets/                      (empty, for images/videos)
+│   ├── components/
+│   │   ├── Navbar/
+│   │   │   └── Navbar.jsx
+│   │   ├── Footer/
+│   │   │   └── Footer.jsx
+│   │   ├── Hero/
+│   │   │   └── Hero.jsx
+│   │   ├── CategoryCard/
+│   │   │   └── CategoryCard.jsx
+│   │   ├── ProductCard/
+│   │   │   └── ProductCard.jsx
+│   │   ├── SupplierCard/
+│   │   │   └── SupplierCard.jsx
+│   │   ├── Testimonial/
+│   │   │   └── Testimonial.jsx
+│   │   ├── SearchBar/
+│   │   │   └── SearchBar.jsx
+│   │   ├── CartItem/
+│   │   │   └── CartItem.jsx
+│   │   └── Button/
+│   │       └── Button.jsx
+│   ├── layouts/
+│   │   ├── MainLayout.jsx
+│   │   ├── AdminLayout.jsx
+│   │   └── SupplierLayout.jsx
+│   ├── pages/
+│   │   ├── Home/Home.jsx
+│   │   ├── About/About.jsx
+│   │   ├── Shop/Shop.jsx
+│   │   ├── Categories/Categories.jsx
+│   │   ├── ProductDetails/ProductDetails.jsx
+│   │   ├── Cart/Cart.jsx
+│   │   ├── Checkout/Checkout.jsx
+│   │   ├── B2B/BulkOrders.jsx
+│   │   ├── Supplier/BecomeSupplier.jsx
+│   │   ├── Supplier/SupplierDashboard.jsx
+│   │   ├── Supplier/MyProducts.jsx
+│   │   ├── Admin/AdminDashboard.jsx
+│   │   ├── Admin/ManageProducts.jsx
+│   │   ├── Admin/ManageSuppliers.jsx
+│   │   ├── Admin/ManageUsers.jsx
+│   │   ├── Contact/Contact.jsx
+│   │   ├── Login/Login.jsx
+│   │   └── NotFound/NotFound.jsx
+│   ├── data/
+│   │   ├── products.js
+│   │   ├── categories.js
+│   │   ├── suppliers.js
+│   │   └── testimonials.js
+│   ├── routes/
+│   │   └── AppRoutes.jsx
+│   ├── context/
+│   │   ├── CartContext.jsx
+│   │   └── UserContext.jsx
+│   ├── styles/
+│   │   ├── global.css
+│   │   └── variables.css
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── index.html
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
