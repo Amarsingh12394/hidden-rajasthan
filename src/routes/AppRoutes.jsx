@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
 import AdminLayout from '../layouts/AdminLayout'
 import SupplierLayout from '../layouts/SupplierLayout'
-import Favorites from '../pages/Favorites/Favorites'
+import ProtectedRoute from '../components/ProtectedRoute'
 
 // Public pages
 import Home from '../pages/Home/Home'
@@ -17,6 +17,7 @@ import BecomeSupplier from '../pages/Supplier/BecomeSupplier'
 import Contact from '../pages/Contact/Contact'
 import Login from '../pages/Login/Login'
 import NotFound from '../pages/NotFound/NotFound'
+import Favorites from '../pages/Favorites/Favorites'
 
 // Admin pages
 import AdminDashboard from '../pages/Admin/AdminDashboard'
@@ -27,8 +28,6 @@ import ManageUsers from '../pages/Admin/ManageUsers'
 // Supplier pages
 import SupplierDashboard from '../pages/Supplier/SupplierDashboard'
 import MyProducts from '../pages/Supplier/MyProducts'
-
-import ProtectedRoute from '../components/ProtectedRoute' // we'll create this
 
 const AppRoutes = () => {
   return (
@@ -46,9 +45,10 @@ const AppRoutes = () => {
         <Route path="/become-supplier" element={<BecomeSupplier />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Route>
 
-      {/* Admin routes with AdminLayout */}
+      {/* Admin routes (protected) */}
       <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminDashboard />} />
@@ -58,7 +58,7 @@ const AppRoutes = () => {
         </Route>
       </Route>
 
-      {/* Supplier routes with SupplierLayout */}
+      {/* Supplier routes (protected) */}
       <Route element={<ProtectedRoute allowedRoles={['supplier']} />}>
         <Route element={<SupplierLayout />}>
           <Route path="/supplier/dashboard" element={<SupplierDashboard />} />
@@ -66,6 +66,7 @@ const AppRoutes = () => {
         </Route>
       </Route>
 
+      {/* 404 Not Found */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
