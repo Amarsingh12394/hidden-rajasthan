@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
 import AdminLayout from '../layouts/AdminLayout'
 import SupplierLayout from '../layouts/SupplierLayout'
+import Favorites from '../pages/Favorites/Favorites'
 
 // Public pages
 import Home from '../pages/Home/Home'

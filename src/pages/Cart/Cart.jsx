@@ -1,10 +1,22 @@
+import { useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
+import { useUser } from '../../context/UserContext'
 import CartItem from '../../components/CartItem/CartItem'
 import Button from '../../components/Button/Button'
-import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const { cartItems, totalPrice, clearCart } = useCart()
+  const { user } = useUser()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login')
+    }
+  }, [user, navigate])
+
+  if (!user) return null
 
   if (cartItems.length === 0) {
     return (
@@ -45,4 +57,5 @@ const Cart = () => {
     </div>
   )
 }
+
 export default Cart
