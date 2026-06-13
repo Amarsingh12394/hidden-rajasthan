@@ -59,7 +59,7 @@ const Shop = () => {
       <div className="mb-6">
         <input
           type="text"
-          placeholder="Search products..."
+          placeholder=""
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full md:w-96 border rounded px-4 py-2"

@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="border rounded-lg p-4 shadow hover:shadow-lg transition relative">
+    <div className="bg-white border rounded-lg p-4 shadow hover:shadow-lg transition relative">
       <button onClick={handleFavorite} className="absolute top-2 right-2 text-2xl">
         {isFavorite(product.id) ? '❤️' : '🤍'}
       </button>
