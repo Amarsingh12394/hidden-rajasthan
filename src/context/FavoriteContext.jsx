@@ -2,12 +2,26 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const FavoriteContext = createContext()
 
-export const useFavorite = () => useContext(FavoriteContext)
+export const useFavorite = () => {
+  const context = useContext(FavoriteContext)
+  if (!context) {
+    throw new Error('useFavorite must be used within a FavoriteProvider')
+  }
+  return context
+}
 
 export const FavoriteProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem('favorites')
-    return saved ? JSON.parse(saved) : []
+    if (saved) {
+      try {
+        return JSON.parse(saved)
+      } catch (error) {
+        console.error('Failed to parse favorites from localStorage', error)
+        return []
+      }
+    }
+    return []
   })
 
   useEffect(() => {
@@ -15,19 +29,36 @@ export const FavoriteProvider = ({ children }) => {
   }, [favorites])
 
   const addToFavorites = (product) => {
-    if (!favorites.some(item => item.id === product.id)) {
-      setFavorites([...favorites, product])
-    }
+    setFavorites((prev) => {
+      if (prev.some((item) => item.id === product.id)) {
+        return prev
+      }
+      return [...prev, product]
+    })
   }
 
   const removeFromFavorites = (productId) => {
-    setFavorites(favorites.filter(item => item.id !== productId))
+    setFavorites((prev) => prev.filter((item) => item.id !== productId))
   }
 
-  const isFavorite = (productId) => favorites.some(item => item.id === productId)
+  const isFavorite = (productId) => {
+    return favorites.some((item) => item.id === productId)
+  }
+
+  const clearFavorites = () => {
+    setFavorites([])
+  }
 
   return (
-    <FavoriteContext.Provider value={{ favorites, addToFavorites, removeFromFavorites, isFavorite }}>
+    <FavoriteContext.Provider
+      value={{
+        favorites,
+        addToFavorites,
+        removeFromFavorites,
+        isFavorite,
+        clearFavorites,
+      }}
+    >
       {children}
     </FavoriteContext.Provider>
   )
